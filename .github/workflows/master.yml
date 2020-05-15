@@ -1,17 +1,19 @@
-name: GitHub Actions Demo
+name: File updater
 on:
   push:
     branches:
       - master
 
-
 jobs:
-  my_first_job:
-    name: My first job
+  update_commit_id:
+    name: Update my file
     runs-on: ubuntu-latest
     steps:
-    - name: Print a greeting
-      env:
-        MY_VAR: Hello, world!
+      uses: actions/checkout@v2
+      name: Update my file
       run: |
-        echo $MY_VAR
+        git status
+        echo hello > hello.txt
+        git add hello.txt
+        git commit -m "Update my file"
+        git push
