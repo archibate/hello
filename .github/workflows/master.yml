@@ -1,16 +1,15 @@
 name: File updater
 on:
   push:
-    branches:
-      - master
+    branches: master
 
 jobs:
   update_commit_id:
     name: Update my file
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
       name: Update my file
+      uses: actions/checkout@v2
       run: |
         git status
         echo hello > hello.txt
